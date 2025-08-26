@@ -1,0 +1,118 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up /"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"/>
+
+    <TextView
+        android:id="@+id/tvLoginHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="18sp"
+        android:textColor="#AAAAAA"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvSignUp"
+        app:layout_constraintStart_toEndOf="@id/tvSignUp"
+        android:layout_marginStart="8dp"/>
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:color/transparent"
+        android:hint="Username"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColor="#333"
+        android:textColorHint="#999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSignUp" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        app:layout_constraintTop_toBottomOf="@id/etUsername"
+        app:layout_constraintStart_toStartOf="@id/etUsername"
+        app:layout_constraintEnd_toEndOf="@id/etUsername"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:background="@android:color/transparent"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"
+        android:inputType="textPassword"
+        android:textColor="#333"
+        android:textColorHint="#999"
+        app:layout_constraintTop_toBottomOf="@id/etUsername"
+        app:layout_constraintStart_toStartOf="@id/etUsername"
+        app:layout_constraintEnd_toEndOf="@id/etUsername"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintStart_toStartOf="@id/etPassword"
+        app:layout_constraintEnd_toEndOf="@id/etPassword"/>
+
+    <EditText
+        android:id="@+id/etRePassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Re-enter Password"
+        android:background="@android:color/transparent"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"
+        android:inputType="textPassword"
+        android:textColor="#333"
+        android:textColorHint="#999"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintStart_toStartOf="@id/etUsername"
+        app:layout_constraintEnd_toEndOf="@id/etUsername"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        app:layout_constraintTop_toBottomOf="@id/etRePassword"
+        app:layout_constraintStart_toStartOf="@id/etRePassword"
+        app:layout_constraintEnd_toEndOf="@id/etRePassword"/>
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:backgroundTint="#FFD54F"
+        android:clipToOutline="true"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:text="Sign Up"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/etRePassword"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="@id/etRePassword"
+        app:layout_constraintTop_toBottomOf="@id/etRePassword" />
+</androidx.constraintlayout.widget.ConstraintLayout>

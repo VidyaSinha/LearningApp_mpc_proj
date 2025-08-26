@@ -1,0 +1,24 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background of the progress bar -->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="30dp"/>
+            <solid android:color="#E0E0E0"/> <!-- light grey background -->
+        </shape>
+    </item>
+
+    <!-- Progress fill -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="30dp"/>
+                <gradient
+                    android:startColor="#FFD700"
+                android:endColor="#B8860B"
+                android:angle="0"/>
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>
