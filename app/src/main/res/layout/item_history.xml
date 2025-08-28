@@ -29,7 +29,6 @@
         android:text="Delete"
         android:background="@drawable/bg_rounded_yellow"
         android:layout_marginTop="8dp"/>
-
 </LinearLayout>
 
 

@@ -167,6 +167,8 @@ class MainActivity : AppCompatActivity() {
                 text = e.summary
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
             }
+
+            
             row.addView(iv)
             row.addView(tv)
             recentList.addView(row)
