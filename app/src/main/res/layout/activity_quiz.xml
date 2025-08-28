@@ -1,57 +1,86 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
+    <!-- Image -->
     <ImageView
-        android:id="@+id/quizImage"
-        android:layout_width="200dp"
+        android:id="@+id/questionImage"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:contentDescription="Quiz image"/>
+        android:contentDescription="Question Image" />
 
+    <!-- Question text -->
     <TextView
-        android:id="@+id/quizQuestion"
+        android:id="@+id/questionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Question text"
-        android:layout_marginTop="16dp"
-        android:textSize="18sp"/>
+        android:text="Question"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp" />
 
-    <EditText
-        android:id="@+id/quizAnswer"
+    <!-- Options -->
+    <RadioGroup
+        android:id="@+id/optionsGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Your answer"
-        android:layout_marginTop="8dp"/>
+        android:orientation="vertical"
+        android:layout_marginTop="12dp">
 
+        <RadioButton
+            android:id="@+id/option1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option 1" />
+
+        <RadioButton
+            android:id="@+id/option2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option 2" />
+
+        <RadioButton
+            android:id="@+id/option3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option 3" />
+
+        <RadioButton
+            android:id="@+id/option4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option 4" />
+    </RadioGroup>
+
+    <!-- Navigation Buttons -->
     <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="16dp">
 
         <Button
-            android:id="@+id/btnPrevious"
+            android:id="@+id/prevBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Previous"/>
+            android:text="Previous" />
 
         <Button
-            android:id="@+id/btnNext"
+            android:id="@+id/nextBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Next"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp" />
 
         <Button
-            android:id="@+id/btnSubmit"
+            android:id="@+id/submitBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit"
-            android:layout_marginStart="16dp"/>
+            android:visibility="gone"
+            android:layout_marginStart="16dp" />
     </LinearLayout>
+
 </LinearLayout>
