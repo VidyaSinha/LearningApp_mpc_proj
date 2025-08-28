@@ -1,130 +1,140 @@
 package com.example.learningapp
 
 import android.app.AlertDialog
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import android.graphics.BitmapFactory
+import kotlin.random.Random
 
 class QuizActivity : AppCompatActivity() {
 
-    private lateinit var questionImage: ImageView
+    private lateinit var imageView: ImageView
     private lateinit var questionText: TextView
     private lateinit var optionsGroup: RadioGroup
-    private lateinit var option1: RadioButton
-    private lateinit var option2: RadioButton
-    private lateinit var option3: RadioButton
-    private lateinit var option4: RadioButton
-    private lateinit var prevBtn: Button
-    private lateinit var nextBtn: Button
-    private lateinit var submitBtn: Button
+    private lateinit var btnPrev: Button
+    private lateinit var btnNext: Button
+    private lateinit var btnSubmit: Button
 
-    private lateinit var questions: List<Question>
     private var currentIndex = 0
-    private lateinit var userAnswers: MutableList<Int?> // store selected option index (0-3)
+    private lateinit var imagePaths: List<String>
+    private lateinit var labels: List<String>
+
+    private val userAnswers = mutableMapOf<Int, String>() // questionIndex -> chosen answer
+    private val questions = mutableListOf<Question>()
+
+    data class Question(
+        val imagePath: String,
+        val correctAnswer: String,
+        val options: List<String>
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-        // Bind views
-        questionImage = findViewById(R.id.questionImage)
-        questionText = findViewById(R.id.questionText)
+        imageView = findViewById(R.id.quizImage)
+        questionText = findViewById(R.id.quizQuestion)
         optionsGroup = findViewById(R.id.optionsGroup)
-        option1 = findViewById(R.id.option1)
-        option2 = findViewById(R.id.option2)
-        option3 = findViewById(R.id.option3)
-        option4 = findViewById(R.id.option4)
-        prevBtn = findViewById(R.id.prevBtn)
-        nextBtn = findViewById(R.id.nextBtn)
-        submitBtn = findViewById(R.id.submitBtn)
+        btnPrev = findViewById(R.id.btnPrev)
+        btnNext = findViewById(R.id.btnNext)
+        btnSubmit = findViewById(R.id.btnSubmit)
 
-        // Load data from intent
-        val imagePaths = intent.getStringArrayListExtra("imagePaths") ?: arrayListOf()
-        val labels = intent.getStringArrayListExtra("labels") ?: arrayListOf()
+        imagePaths = intent.getStringArrayListExtra("imagePaths") ?: emptyList()
+        labels = intent.getStringArrayListExtra("labels") ?: emptyList()
 
-        // Create questions with fake 4 options (you can replace logic with real options)
-        questions = labels.mapIndexed { index, label ->
-            Question(
-                imagePath = imagePaths[index],
-                text = "What is shown in this image?",
-                options = listOf(label, "Option A", "Option B", "Option C"), // label is correct
-                correctIndex = 0
+        // ✅ Extract only object names (first word capitalized)
+        labels = labels.map { label ->
+            label.split(" ")[0].replaceFirstChar { it.uppercaseChar() }
+        }
+
+        // Build questions
+        buildQuestions()
+        showQuestion()
+
+        btnPrev.setOnClickListener {
+            if (currentIndex > 0) {
+                saveAnswer()
+                currentIndex--
+                showQuestion()
+            }
+        }
+
+        btnNext.setOnClickListener {
+            if (currentIndex < questions.size - 1) {
+                saveAnswer()
+                currentIndex++
+                showQuestion()
+            }
+        }
+
+        btnSubmit.setOnClickListener {
+            saveAnswer()
+            confirmSubmission()
+        }
+    }
+
+    private fun buildQuestions() {
+        val allLabels = labels.toMutableList()
+        for (i in labels.indices) {
+            val correct = labels[i]
+
+            // Pick 3 random wrong answers
+            val wrongs = allLabels.filter { it != correct }.shuffled().take(3)
+
+            // Merge + shuffle
+            val options = (wrongs + correct).shuffled(Random(System.currentTimeMillis()))
+
+            questions.add(
+                Question(
+                    imagePath = imagePaths[i],
+                    correctAnswer = correct,
+                    options = options
+                )
             )
         }
-
-        userAnswers = MutableList(questions.size) { null }
-
-        loadQuestion()
-
-        prevBtn.setOnClickListener {
-            if (currentIndex > 0) {
-                saveSelectedAnswer()
-                currentIndex--
-                loadQuestion()
-            }
-        }
-
-        nextBtn.setOnClickListener {
-            if (currentIndex < questions.size - 1) {
-                saveSelectedAnswer()
-                currentIndex++
-                loadQuestion()
-            }
-        }
-
-        submitBtn.setOnClickListener {
-            saveSelectedAnswer()
-            confirmSubmit()
-        }
     }
 
-    private fun loadQuestion() {
+    private fun showQuestion() {
         val q = questions[currentIndex]
+
+        // Show image
         val bmp = BitmapFactory.decodeFile(q.imagePath)
-        questionImage.setImageBitmap(bmp)
-        questionText.text = q.text
+        imageView.setImageBitmap(bmp)
 
-        option1.text = q.options[0]
-        option2.text = q.options[1]
-        option3.text = q.options[2]
-        option4.text = q.options[3]
+        // Show question text
+        questionText.text = "Question ${currentIndex + 1}: What is this object?"
 
-        // Restore previous answer if any
-        optionsGroup.clearCheck()
-        userAnswers[currentIndex]?.let {
-            when (it) {
-                0 -> option1.isChecked = true
-                1 -> option2.isChecked = true
-                2 -> option3.isChecked = true
-                3 -> option4.isChecked = true
+        // Show options
+        optionsGroup.removeAllViews()
+        for (option in q.options) {
+            val rb = RadioButton(this)
+            rb.text = option
+            optionsGroup.addView(rb)
+
+            if (userAnswers[currentIndex] == option) {
+                rb.isChecked = true
             }
         }
 
-        prevBtn.isEnabled = currentIndex > 0
-        nextBtn.isEnabled = currentIndex < questions.size - 1
-        submitBtn.visibility = if (currentIndex == questions.size - 1) Button.VISIBLE else Button.GONE
+        // Buttons enable/disable
+        btnPrev.isEnabled = currentIndex > 0
+        btnNext.isEnabled = currentIndex < questions.size - 1
     }
 
-    private fun saveSelectedAnswer() {
+    private fun saveAnswer() {
         val selectedId = optionsGroup.checkedRadioButtonId
-        val answerIndex = when (selectedId) {
-            R.id.option1 -> 0
-            R.id.option2 -> 1
-            R.id.option3 -> 2
-            R.id.option4 -> 3
-            else -> null
+        if (selectedId != -1) {
+            val selected = findViewById<RadioButton>(selectedId).text.toString()
+            userAnswers[currentIndex] = selected
         }
-        userAnswers[currentIndex] = answerIndex
     }
 
-    private fun confirmSubmit() {
+    private fun confirmSubmission() {
         AlertDialog.Builder(this)
             .setTitle("Submit Quiz")
             .setMessage("Are you sure you want to submit?")
-            .setPositiveButton("Yes") { _, _ ->
-                calculateScore()
-            }
+            .setPositiveButton("Yes") { _, _ -> calculateScore() }
             .setNegativeButton("No", null)
             .show()
     }
@@ -132,21 +142,14 @@ class QuizActivity : AppCompatActivity() {
     private fun calculateScore() {
         var score = 0
         for (i in questions.indices) {
-            if (userAnswers[i] == questions[i].correctIndex) {
+            if (userAnswers[i] == questions[i].correctAnswer) {
                 score++
             }
         }
         AlertDialog.Builder(this)
-            .setTitle("Quiz Finished")
+            .setTitle("Result")
             .setMessage("You scored $score out of ${questions.size}")
-            .setPositiveButton("OK") { _, _ -> finish() }
+            .setPositiveButton("OK", null)
             .show()
     }
 }
-
-data class Question(
-    val imagePath: String,
-    val text: String,
-    val options: List<String>,
-    val correctIndex: Int
-)
