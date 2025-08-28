@@ -43,7 +43,7 @@ class QuizActivity : AppCompatActivity() {
         imagePaths = intent.getStringArrayListExtra("imagePaths") ?: emptyList()
         labels = intent.getStringArrayListExtra("labels") ?: emptyList()
 
-        // ✅ Extract only object names (first word capitalized)
+        // Extract only object names (first word capitalized)
         labels = labels.map { label ->
             label.split(" ")[0].replaceFirstChar { it.uppercaseChar() }
         }
