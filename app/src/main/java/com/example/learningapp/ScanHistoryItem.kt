@@ -6,5 +6,8 @@ data class ScanHistoryItem(
     val imagePath: String,
     val summary: String,
     val timestamp: Long,
-    var isFavorite: Boolean = false // New field for favorites
+    var isFavorite: Boolean = false,
+    val color: String = "",
+    val size: String = "",
+    val quality: String = ""
 )

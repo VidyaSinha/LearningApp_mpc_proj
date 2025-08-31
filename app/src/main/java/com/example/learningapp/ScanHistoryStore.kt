@@ -14,7 +14,9 @@ object ScanHistoryStore {
     private const val PREFS_KEY = "scan_history"
     private val gson = Gson()
 
-    fun saveScan(context: Context, bitmap: Bitmap, summary: String) {
+    // Now accepts optional color/size/quality
+    fun saveScan(context: Context, bitmap: Bitmap, summary: String,
+                 color: String = "", size: String = "", quality: String = "") {
         val id = UUID.randomUUID().toString()
         val fileName = "$id.png"
         val file = File(context.filesDir, fileName)
@@ -29,7 +31,10 @@ object ScanHistoryStore {
             imagePath = file.absolutePath,
             summary = summary,
             timestamp = System.currentTimeMillis(),
-            isFavorite = false
+            isFavorite = false,
+            color = color,
+            size = size,
+            quality = quality
         )
         allItems.add(0, newItem)
         saveAll(context, allItems)
@@ -46,8 +51,6 @@ object ScanHistoryStore {
     fun loadFavorites(context: Context): List<ScanHistoryItem> {
         return loadAll(context).filter { it.isFavorite }
     }
-
-
 
     fun deleteScan(context: Context, itemId: String) {
         val allItems = loadAll(context).toMutableList()

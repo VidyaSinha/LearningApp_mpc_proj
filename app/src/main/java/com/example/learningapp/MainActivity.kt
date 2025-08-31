@@ -173,48 +173,54 @@ class MainActivity : AppCompatActivity() {
      * Runs detection. If autoHideAfterCapture==true we will hide the main preview/result after a short time
      */
     private fun showAndDetect(bitmap: Bitmap, autoHideAfterCapture: Boolean) {
+        // Hide recents if they are open
+        recentsScroll.visibility = View.GONE
+        tvRecentsTitle.visibility = View.GONE
+
         resultTextView.visibility = View.VISIBLE
         resultTextView.text = "Detecting..."
 
-        try {
-            detector.detect(bitmap,
-                onSuccess = { results, _ ->
-                    val sb = StringBuilder()
-                    results.forEach { res ->
-                        sb.append("${res.label} (${(res.confidence * 100).toInt()}%)\n")
-                        sb.append("Color: ${res.color}, Size: ${res.size}, Quality: ${res.quality}\n\n")
-                    }
-
-                    // Draw boxes, save annotated image & show
-                    val boxed = drawBoxes(bitmap, results)
-                    try {
-                        ScanHistoryStore.saveScan(this, boxed, sb.toString())
-                    } catch (e: Exception) {
-                        Log.e(TAG, "Failed to save scan", e)
-                    }
-
-                    imageView.setImageBitmap(boxed)
-                    imageView.visibility = View.VISIBLE
-                    resultTextView.text = sb.toString()
-                    resultTextView.visibility = View.VISIBLE
-
-                    if (autoHideAfterCapture) {
-                        Handler(Looper.getMainLooper()).postDelayed({
-                            imageView.visibility = View.GONE
-                            resultTextView.visibility = View.GONE
-                        }, 3500)
-                    }
-                },
-                onError = { ex ->
-                    Log.e(TAG, "Detection error", ex)
-                    resultTextView.text = "❌ Detection failed: ${ex.message}"
+        detector.detect(bitmap,
+            onSuccess = { results, _ ->
+                val sb = StringBuilder()
+                results.forEach { res ->
+                    sb.append("${res.label} (${(res.confidence * 100).toInt()}%)\n")
+                    sb.append("Color: ${res.color}, Size: ${res.size}, Quality: ${res.quality}\n\n")
                 }
-            )
-        } catch (e: Exception) {
-            Log.e(TAG, "Exception running detector", e)
-            resultTextView.text = "❌ Detection failed: ${e.message}"
-        }
+
+                // prefer the most confident result for metadata
+                val primary = results.maxByOrNull { it.confidence }
+
+                // Draw boxes on the bitmap (annotated image to save and show)
+                val boxed = drawBoxes(bitmap, results)
+
+                // Save boxed annotated image and summary to history, including metadata
+                val colorVal = primary?.color ?: ""
+                val sizeVal = primary?.size ?: ""
+                val qualityVal = primary?.quality ?: ""
+                ScanHistoryStore.saveScan(this, boxed, sb.toString(), colorVal, sizeVal, qualityVal)
+
+                // show annotated image + text on main screen
+                imageView.setImageBitmap(boxed)
+                imageView.visibility = View.VISIBLE
+                resultTextView.text = sb.toString()
+                resultTextView.visibility = View.VISIBLE
+
+                // If this was a freshly captured/picked image, auto-hide after a few seconds
+                if (autoHideAfterCapture) {
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        imageView.visibility = View.GONE
+                        resultTextView.visibility = View.GONE
+                    }, 3500) // hides after ~3.5s so user can glance at result
+                }
+            },
+            onError = {
+                resultTextView.text = "❌ Detection failed: ${it.message}"
+            }
+        )
     }
+
+
 
     private fun drawBoxes(bmp: Bitmap, list: List<DetectionResult>): Bitmap {
         val out = bmp.copy(Bitmap.Config.ARGB_8888, true)
@@ -272,24 +278,40 @@ class MainActivity : AppCompatActivity() {
                 val bmp = try { BitmapFactory.decodeFile(e.imagePath) } catch (ex: Exception) { null }
                 bmp?.let { setImageBitmap(it) }
             }
+            // Build the summary + metadata text
+            // Build the summary + metadata text
             val tv = TextView(this).apply {
                 layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
                     .apply { setMargins(dp(12f), 0, 0, 0) }
-                text = e.summary
+
+                text = buildString {
+                    append(e.summary.trim())
+                    if (e.color.isNotBlank()) append("\nColor: ${e.color}")
+                    if (e.size.isNotBlank()) append("\nSize: ${e.size}")
+                    if (e.quality.isNotBlank()) append("\nQuality: ${e.quality}")
+                }
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
             }
 
+// row click should show full details
             row.setOnClickListener {
                 val bmp = BitmapFactory.decodeFile(e.imagePath)
                 if (bmp != null) {
                     imageView.setImageBitmap(bmp)
                     imageView.visibility = View.VISIBLE
-                    resultTextView.text = e.summary
+                    resultTextView.text = buildString {
+                        append(e.summary.trim())
+                        if (e.color.isNotBlank()) append("\nColor: ${e.color}")
+                        if (e.size.isNotBlank()) append("\nSize: ${e.size}")
+                        if (e.quality.isNotBlank()) append("\nQuality: ${e.quality}")
+                    }
                     resultTextView.visibility = View.VISIBLE
                 } else {
                     Toast.makeText(this@MainActivity, "Unable to open image", Toast.LENGTH_SHORT).show()
                 }
             }
+
+
 
             row.addView(iv)
             row.addView(tv)
