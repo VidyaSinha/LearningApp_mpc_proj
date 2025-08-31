@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.LearningApp" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/yellowPrimary</item>
+        <item name="colorPrimaryContainer">@color/yellowSecondary</item>
+        <item name="colorOnPrimary">@color/yellowOnPrimary</item>
+        <item name="android:statusBarColor">@color/yellowPrimary</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+</resources>
