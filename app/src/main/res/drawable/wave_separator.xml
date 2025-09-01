@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="match_parent"
+    android:height="120dp"
+    android:viewportWidth="400"
+    android:viewportHeight="120">
+    
+    <!-- Ocean wave 1 - Main wave -->
+    <path
+        android:fillColor="#E3F2FD"
+        android:pathData="M0,60 Q50,20 100,50 Q150,80 200,40 Q250,10 300,45 Q350,75 400,35 L400,120 L0,120 Z" />
+    
+    <!-- Ocean wave 2 - Secondary wave -->
+    <path
+        android:fillColor="#BBDEFB"
+        android:pathData="M0,70 Q80,30 160,60 Q240,90 320,50 Q360,20 400,55 L400,120 L0,120 Z" />
+    
+    <!-- Ocean wave 3 - Deep wave -->
+    <path
+        android:fillColor="#90CAF9"
+        android:pathData="M0,80 Q60,40 120,70 Q180,100 240,60 Q300,30 400,65 L400,120 L0,120 Z" />
+    
+    <!-- White foam on top -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M0,50 Q40,15 80,40 Q120,65 160,35 Q200,10 240,40 Q280,65 320,35 Q360,10 400,40 L400,60 L0,60 Z" />
+</vector>
