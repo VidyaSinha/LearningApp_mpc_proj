@@ -1,5 +1,3 @@
-# ObjectLingo - A Learning App through Taking Pictures
-
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
 
