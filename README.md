@@ -1,23 +1,23 @@
-<img width="374" height="665" alt="image" src="https://github.com/user-attachments/assets/1e23a0e1-89a5-431d-bbb0-9bdb4eaa74fb" /># 🔍 ObjectLingo - A Learning App through Taking Pictures
+# ObjectLingo - A Learning App through Taking Pictures
 
 <div align="center">
-  SPLASH SCREEN
-  <img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/788d5b2c-1359-49be-a577-b608d3ba097f" />
-  Login screen
-  <img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/1b96d618-c561-42a2-b7ba-d866f5d97e6f" />
+  **SPLASH SCREEN**  
+  <img width="200" alt="Splash Screen" src="https://github.com/user-attachments/assets/788d5b2c-1359-49be-a577-b608d3ba097f" />
+  
+  **Login Screen**  
+  <img width="200" alt="Login Screen" src="https://github.com/user-attachments/assets/1b96d618-c561-42a2-b7ba-d866f5d97e6f" />
 
-  Main screen
-  <img width="374" height="665" alt="image" src="https://github.com/user-attachments/assets/439dac78-61d9-4c34-b9cb-4f8a3651834e" />
-  History 
-<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/bab9c111-cdc6-458f-a577-92b2432ae754" />
+  **Main Screen**  
+  <img width="200" alt="Main Screen" src="https://github.com/user-attachments/assets/439dac78-61d9-4c34-b9cb-4f8a3651834e" />
+  
+  **History**  
+  <img width="200" alt="History Screen" src="https://github.com/user-attachments/assets/bab9c111-cdc6-458f-a577-92b2432ae754" />
 
+  **Quiz Screen**  
+  <img width="200" alt="Quiz Screen" src="https://github.com/user-attachments/assets/32e20114-1f06-40b1-8c8e-bcb993501d29" />
 
-Quiz screen
-<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/32e20114-1f06-40b1-8c8e-bcb993501d29" />
-Result Screen
-<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/5009530a-6109-4cd6-bf8f-c84fd2ebcc32" />
-
- 
+  **Result Screen**  
+  <img width="200" alt="Result Screen" src="https://github.com/user-attachments/assets/5009530a-6109-4cd6-bf8f-c84fd2ebcc32" />
 </div>
 
 ##  Overview
