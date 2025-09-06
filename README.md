@@ -1,43 +1,54 @@
-# 🔍 ObjectLingo - A Learning App through Taking Pictures
+<img width="374" height="665" alt="image" src="https://github.com/user-attachments/assets/1e23a0e1-89a5-431d-bbb0-9bdb4eaa74fb" /># 🔍 ObjectLingo - A Learning App through Taking Pictures
 
 <div align="center">
-  <img src="docs/splash_screen.png" alt="Splash Screen" width="200"/>
-  <img src="docs/main_screen.png" alt="Main Screen" width="200"/>
-  <img src="docs/quiz_screen.png" alt="Quiz Screen" width="200"/>
-  <img src="docs/history_screen.png" alt="History Screen" width="200"/>
-  <img src="docs/result_screen.png" alt="Result Screen" width="200"/>
-  <img src="docs/login_screen.png" alt="Login Screen" width="200"/>
+  SPLASH SCREEN
+  <img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/788d5b2c-1359-49be-a577-b608d3ba097f" />
+  Login screen
+  <img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/1b96d618-c561-42a2-b7ba-d866f5d97e6f" />
+
+  Main screen
+  <img width="374" height="665" alt="image" src="https://github.com/user-attachments/assets/439dac78-61d9-4c34-b9cb-4f8a3651834e" />
+  History 
+<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/bab9c111-cdc6-458f-a577-92b2432ae754" />
+
+
+Quiz screen
+<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/32e20114-1f06-40b1-8c8e-bcb993501d29" />
+Result Screen
+<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/5009530a-6109-4cd6-bf8f-c84fd2ebcc32" />
+
+ 
 </div>
 
-## 🌟 Overview
+##  Overview
 
 ObjectLingo is a **kid-friendly, camera-first learning application** that transforms object detection into an engaging educational experience. Children can capture photos of objects around them and learn about them through AI-powered detection, interactive quizzes, and a beautiful, bubbly user interface designed specifically for young learners.
 
-## ✨ Key Features
+##  Key Features
 
-### 🎯 **Core Learning Features**
-- **📸 Smart Camera Integration**: Capture photos with the device camera or select from gallery
-- **🤖 AI-Powered Object Detection**: Uses ML Kit for real-time object recognition and labeling
-- **📊 Detailed Object Analysis**: Provides confidence scores, color, size, and quality information
-- **🎨 Visual Annotations**: Draws bounding boxes and labels directly on detected objects
+###  **Core Learning Features**
+- **Smart Camera Integration**: Capture photos with the device camera or select from gallery
+- **AI-Powered Object Detection**: Uses ML Kit for real-time object recognition and labeling
+- **Detailed Object Analysis**: Provides confidence scores, color, size, and quality information
+- **Visual Annotations**: Draws bounding boxes and labels directly on detected objects
 
-### 🎮 **Interactive Learning**
-- **🧩 Quiz System**: Interactive multiple-choice quizzes based on detected objects
-- **📚 Learning History**: Track all discovered objects with detailed metadata
-- **⭐ Favorites System**: Mark favorite discoveries for easy access
-- **🏆 Progress Tracking**: Monitor learning progress and achievements
+###  **Interactive Learning**
+- **Quiz System**: Interactive multiple-choice quizzes based on detected objects
+- **Learning History**: Track all discovered objects with detailed metadata
+- **Favorites System**: Mark favorite discoveries for easy access
+- **Progress Tracking**: Monitor learning progress and achievements
 
-### 🎨 **Kid-Friendly Design**
-- **🌈 Vibrant, Bubbly UI**: Bright colors, rounded corners, and playful gradients
-- **😊 Emoji-Rich Interface**: Engaging emojis throughout the app for better child engagement
-- **📱 Large Touch Targets**: Buttons and elements sized appropriately for small fingers
-- **🖼️ Prominent Image Display**: Images take up 50% of the screen for better visibility
-- **🎪 Encouraging Messages**: Positive, child-friendly feedback and instructions
+### **Kid-Friendly Design**
+- **Vibrant, Bubbly UI**: Bright colors, rounded corners, and playful gradients
+- **Emoji-Rich Interface**: Engaging emojis throughout the app for better child engagement
+- **Large Touch Targets**: Buttons and elements sized appropriately for small fingers
+- **Prominent Image Display**: Images take up 50% of the screen for better visibility
+- **Encouraging Messages**: Positive, child-friendly feedback and instructions
 
-### 🔐 **User Management**
-- **👤 User Authentication**: Secure login and signup system
-- **💾 Persistent Storage**: All learning data saved locally on device
-- **🔄 Session Management**: Seamless user experience with proper back stack handling
+### **User Management**
+- **User Authentication**: Secure login and signup system
+- **Persistent Storage**: All learning data saved locally on device
+- **Session Management**: Seamless user experience with proper back stack handling
 
 ## 🛠️ Technical Stack
 
@@ -48,50 +59,50 @@ ObjectLingo is a **kid-friendly, camera-first learning application** that transf
 - **Storage**: Local file system + SharedPreferences (JSON)
 - **Image Processing**: Android Canvas API for annotations
 
-## 📱 Screenshots & Features
 
-### 🚀 Splash Screen
+
+###  Splash Screen
 - **App Branding**: Clean, professional splash screen with app logo
 - **Loading Animation**: Progress bar showing app initialization
 - **Smooth Transitions**: Seamless flow to main application
 
-### 🏠 Main Screen
+### Main Screen
 - **Hero Image Area**: Large, prominent image display (50% of screen)
 - **Camera Hint Overlay**: Encouraging "Tap to take a photo!" message
 - **Action Buttons**: 
-  - 📷 **Camera Button**: Direct camera access with fun styling
-  - 🖼️ **Gallery Button**: Photo picker integration
+  - **Camera Button**: Direct camera access with fun styling
+  - **Gallery Button**: Photo picker integration
 - **Quick Actions Panel**:
-  - 🕒 **Recent**: View last 5 discoveries
-  - ⭐ **Favorites**: Access starred items
-  - 📚 **History**: Complete learning history
+  - **Recent**: View last 5 discoveries
+  - **Favorites**: Access starred items
+  - **History**: Complete learning history
 
-### 🧩 Quiz Screen
+### Quiz Screen
 - **Image Display**: Full-screen object image for analysis
 - **Multiple Choice Questions**: Interactive quiz format
 - **Progress Tracking**: Question counter and navigation
 - **Answer Selection**: Radio button interface for answers
 
-### 📚 History Screen
+### History Screen
 - **Discovery List**: Scrollable list of all learned objects
 - **Thumbnail Previews**: Small image previews for each item
 - **Detailed Information**: Object name, confidence, color, size, quality
 - **Management Actions**: Star favorites and delete items
 - **Search & Filter**: Find specific discoveries quickly
 
-### 🏆 Result Screen
+### Result Screen
 - **Score Display**: Clear presentation of quiz results
 - **Performance Feedback**: Encouraging messages based on performance
 - **Progress Summary**: Overall learning progress
 - **Action Buttons**: Continue learning or retry quizzes
 
-### 🔐 Login Screen
+###  Login Screen
 - **User Authentication**: Secure login interface
 - **Sign Up Integration**: Easy account creation
 - **Form Validation**: Input validation and error handling
 - **Remember Me**: Optional session persistence
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Android Studio (latest version)
@@ -177,7 +188,7 @@ app/
 └── proguard-rules.pro                  # Code obfuscation rules
 ```
 
-## 🎯 Key Components
+## Key Components
 
 ### **MainActivity.kt**
 - Camera and gallery integration
@@ -206,20 +217,20 @@ app/
 ## 🔮 Future Enhancements
 
 ### **Planned Features**
-- 🗣️ **Voice Integration**: Audio descriptions and pronunciation
-- 🌍 **Multi-language Support**: Learn in different languages
-- 👥 **Social Features**: Share discoveries with friends
-- 🏆 **Achievement System**: Badges and rewards for learning milestones
-- 📊 **Analytics Dashboard**: Detailed learning progress reports
-- 🎨 **Custom Themes**: Personalize the app appearance
-- 🔄 **Cloud Sync**: Backup and sync across devices
+- **Voice Integration**: Audio descriptions and pronunciation
+- **Multi-language Support**: Learn in different languages
+- **Social Features**: Share discoveries with friends
+- **Achievement System**: Badges and rewards for learning milestones
+- **Analytics Dashboard**: Detailed learning progress reports
+- **Custom Themes**: Personalize the app appearance
+- **Cloud Sync**: Backup and sync across devices
 
 ### **Technical Improvements**
-- 🏗️ **Room Database**: Replace SharedPreferences with proper database
-- 🖼️ **Image Optimization**: Better compression and thumbnail generation
-- ⚡ **Performance**: Faster detection and smoother animations
-- 🧪 **Testing**: Comprehensive unit and integration tests
-- 🔒 **Security**: Enhanced data protection and privacy features
+- **Room Database**: Replace SharedPreferences with proper database
+- **Image Optimization**: Better compression and thumbnail generation
+- **Performance**: Faster detection and smoother animations
+- **Testing**: Comprehensive unit and integration tests
+- **Security**: Enhanced data protection and privacy features
 
 ## 🤝 Contributing
 
@@ -251,7 +262,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-<div align="center">
-  <p><strong>Made with ❤️ for curious young minds</strong></p>
-  <p>Start your learning journey today! 🚀</p>
-</div>
