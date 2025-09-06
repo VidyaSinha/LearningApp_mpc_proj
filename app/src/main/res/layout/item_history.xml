@@ -2,33 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="#FFF59D"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_rounded_card"
     android:padding="12dp"
+    android:gravity="center_vertical"
     android:layout_marginBottom="12dp">
 
     <ImageView
-        android:id="@+id/historyImage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:id="@+id/historyImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:scaleType="centerCrop"
         android:background="#CCCCCC"/>
 
     <TextView
-        android:id="@+id/historyText"
-        android:layout_width="match_parent"
+        android:id="@+id/historySummaryTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
         android:textColor="#333333"
         android:textSize="14sp"
-        android:paddingTop="8dp"/>
+        android:text="Summary of the detected object..."/>
 
-    <Button
+    <ImageButton
+        android:id="@+id/btnFavorite"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Favorite"
+        android:src="@drawable/ic_star_outline" />
+
+    <ImageButton
         android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:background="@drawable/bg_rounded_yellow"
-        android:layout_marginTop="8dp"/>
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Delete"
+        android:src="@android:drawable/ic_menu_delete" />
 </LinearLayout>
-
-

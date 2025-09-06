@@ -1,263 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#FFF8E1"
+    android:fillViewport="true"
     tools:context=".MainActivity">
 
-    <!-- Hero Section with Background Image -->
-    <LinearLayout
-        android:id="@+id/heroSection"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/hero_background"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="24dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.5">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-        <!-- Header Title with Gradient Overlay -->
-        <TextView
-            android:id="@+id/headerTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_rounded_light"
-            android:padding="16dp"
-            android:text="Scan something fun!"
-            android:textColor="#333333"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:shadowColor="#80000000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="4"
-            android:layout_marginBottom="24dp" />
-
-        <!-- Camera Hint -->
-        <TextView
-            android:id="@+id/tvCameraHint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:shadowColor="#80000000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="4"
-            android:text="🌟 Discover the world around you! 🌟"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <!-- Button Container for better layout -->
+        <!-- Fun Header with Emoji -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/headerContainer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginBottom="16dp">
+            android:background="@drawable/bg_bubble_primary"
+            android:padding="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <!-- Camera Button -->
-            <Button
-                android:id="@+id/button"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rounded_yellow"
-                android:text="📸 Camera"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:drawableLeft="@drawable/ic_camera_kid"
-                android:drawablePadding="8dp"
-                android:padding="20dp"
-                android:elevation="8dp"
-                android:layout_marginEnd="12dp" />
+                android:text="🔍✨"
+                android:textSize="32sp"
+                android:layout_marginBottom="8dp" />
 
-            <!-- Gallery Button -->
-            <Button
-                android:id="@+id/learningButton"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🖼️ Gallery"
-                android:textColor="#333333"
-                android:textSize="16sp"
+                android:text="Let's Learn Together!"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                android:background="@drawable/bg_rounded_light"
-                android:drawableLeft="@drawable/ic_gallery_kid"
-                android:drawablePadding="8dp"
-                android:padding="20dp"
-                android:elevation="6dp" />
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Take a picture and discover amazing things! 🌟"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginTop="4dp" />
 
         </LinearLayout>
 
-    </LinearLayout>
+        <!-- Main Image Display Area - Takes up half the screen -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCardContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:layout_constraintTop_toBottomOf="@id/headerContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5">
 
-    <!-- Ocean Wavy Separator -->
-    <ImageView
-        android:id="@+id/waveSeparator"
-        android:layout_width="421dp"
-        android:layout_height="51dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/wave_separator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/heroSection" />
-
-    <!-- Content Section -->
-    <ScrollView
-        android:id="@+id/contentScroll"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/waveSeparator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <!-- Fun Activities Title -->
-
-            <!-- Quick Actions Row -->
-            <TextView
-                android:id="@+id/tvQuickActions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="20dp"
-                android:text="🎮 Fun Activities 🎮"
-                android:textColor="#333333"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/quickActionsRow"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="24dp">
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_image_container">
 
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="64dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="6dp"
-                    android:text="📷\nCamera"
-                    android:textColor="#333333"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/bg_rounded_light"
-                    android:elevation="3dp"
-                    android:gravity="center"/>
+                <!-- Hero Image (when no photo taken) -->
+                <ImageView
+                    android:id="@+id/heroImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/mainbg"
+                    android:contentDescription="Fun learning background" />
 
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="64dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginEnd="3dp"
-                    android:text="⭐\nFavorites"
-                    android:textColor="#333333"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/bg_rounded_light"
-                    android:elevation="3dp"
-                    android:gravity="center"/>
+                <!-- Captured/Selected Image -->
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    android:contentDescription="Your captured image" />
 
-                <Button
-                    android:id="@+id/btnQuickRecent"
-                    android:layout_width="0dp"
-                    android:layout_height="64dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="6dp"
-                    android:text="🕒\nRecent"
-                    android:textColor="#333333"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/bg_rounded_light"
-                    android:elevation="3dp"
-                    android:gravity="center"/>
-            </LinearLayout>
+                <!-- Camera Hint Overlay -->
+                <LinearLayout
+                    android:id="@+id/cameraHintOverlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_bubble_accent"
+                    android:padding="20dp"
+                    android:visibility="visible">
 
-            <!-- History Button -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📸"
+                        android:textSize="48sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tap to take a photo!"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Action Buttons Row -->
+        <LinearLayout
+            android:id="@+id/actionButtonsContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@id/imageCardContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
             <Button
-                android:id="@+id/btnHistory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🎓 See all learnt objects! 🎓"
-                android:textColor="#333333"
-                android:textSize="16sp"
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="📷 Camera"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:background="@drawable/bg_rounded_yellow"
-                android:padding="20dp"
-                android:elevation="6dp"
-                android:layout_marginBottom="24dp"/>
+                android:background="@drawable/btn_camera_fun"
+                android:drawablePadding="8dp"
+                android:gravity="center" />
 
-            <!-- Captured Image -->
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="240dp"
-                android:layout_height="240dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_rounded_card"
-                android:scaleType="centerCrop"
-                android:visibility="gone"
-                android:elevation="6dp"/>
+            <Button
+                android:id="@+id/learningButton"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="🖼️ Gallery"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:background="@drawable/btn_gallery_fun"
+                android:drawablePadding="8dp"
+                android:gravity="center" />
 
-            <!-- Result Text -->
+        </LinearLayout>
+
+        <!-- Result Display Area -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/resultCardContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#FFFFFF"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/actionButtonsContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
             <TextView
                 android:id="@+id/resultTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_rounded_card"
-                android:padding="16dp"
-                android:textSize="14sp"
+                android:background="@drawable/bg_result_container"
+                android:padding="20dp"
+                android:textSize="16sp"
                 android:textColor="#333333"
-                android:visibility="gone"
-                android:elevation="4dp"/>
+                android:lineSpacingMultiplier="1.2"
+                android:gravity="center" />
 
-            <!-- Recent Scans Section (hidden until opened) -->
+        </androidx.cardview.widget.CardView>
+
+        <!-- Quick Actions Section -->
+        <LinearLayout
+            android:id="@+id/quickActionsContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_bubble_secondary"
+            android:padding="20dp"
+            app:layout_constraintTop_toBottomOf="@id/resultCardContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
             <TextView
-                android:id="@+id/tvRecentsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🌟 Your Recent Discoveries! 🌟"
+                android:text="⚡ Quick Actions"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="#333333"
-                android:visibility="gone"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="12dp"/>
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:layout_gravity="center" />
 
-            <ScrollView
-                android:id="@+id/recentsScroll"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:visibility="gone"
-                android:fillViewport="true"
-                android:background="@drawable/bg_rounded_light"
-                android:elevation="4dp">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
 
-                <LinearLayout
-                    android:id="@+id/recentList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp"/>
-            </ScrollView>
+                <Button
+                    android:id="@+id/btnQuickRecent"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="🕒 Recent"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btn_action_fun"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/btnFavorites"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="⭐ Favorites"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btn_action_fun"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/btnHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:text="📚 History"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btn_action_fun"
+                    android:gravity="center" />
+
+            </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Recents Section (hidden until opened) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/recentsCardContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#FFFFFF"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/quickActionsContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvRecentsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌟 Recent Discoveries"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#FF6B9D"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:layout_gravity="center" />
+
+                <ScrollView
+                    android:id="@+id/recentsScroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:id="@+id/recentList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="4dp" />
+
+                </ScrollView>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

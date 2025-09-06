@@ -1,3 +1,5 @@
+package com.example.learningapp
+
 import android.content.Context
 import android.graphics.*
 import com.example.learningapp.DetectionResult

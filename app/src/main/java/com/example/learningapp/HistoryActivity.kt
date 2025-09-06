@@ -1,43 +1,42 @@
 package com.example.learningapp
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class HistoryActivity : AppCompatActivity() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: HistoryAdapter
+    private lateinit var btnStartQuiz: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
 
-        val container: LinearLayout = findViewById(R.id.historyContainer)
-        val btnStartQuiz: Button = findViewById(R.id.btnStartQuiz)
+        recyclerView = findViewById(R.id.historyRecycler)
+        btnStartQuiz = findViewById(R.id.btnStartQuiz)
 
-        fun refresh() {
-            container.removeAllViews()
-            val items = ScanHistoryStore.loadAll(this)
-
-            items.forEach { entry ->
-                val item = layoutInflater.inflate(R.layout.item_history, container, false)
-                val iv = item.findViewById<ImageView>(R.id.historyImage)
-                val tv = item.findViewById<TextView>(R.id.historyText)
-                val btnDel = item.findViewById<Button>(R.id.btnDelete)
-
-                val bmp = BitmapFactory.decodeFile(entry.imagePath)
-                iv.setImageBitmap(bmp)
-                tv.text = entry.summary
-
-                btnDel.setOnClickListener {
-                    ScanHistoryStore.deleteScan(this, entry)
-                    refresh()
-                }
-
-                container.addView(item)
+        adapter = HistoryAdapter(
+            onDeleteClick = { item ->
+                ScanHistoryStore.deleteScan(this, item.id)
+                adapter.submitList(ScanHistoryStore.loadAll(this))
+            },
+            onFavoriteClick = { item ->
+                ScanHistoryStore.toggleFavoriteStatus(this, item.id)
+                adapter.submitList(ScanHistoryStore.loadAll(this))
             }
-        }
+        )
 
-        refresh()
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+
+        // Load data initially
+        adapter.submitList(ScanHistoryStore.loadAll(this))
 
         btnStartQuiz.setOnClickListener {
             val items = ScanHistoryStore.loadAll(this)
