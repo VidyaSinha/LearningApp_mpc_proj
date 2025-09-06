@@ -7,14 +7,16 @@
   <img width="180" alt="Splash Screen" src="https://github.com/user-attachments/assets/788d5b2c-1359-49be-a577-b608d3ba097f" />
   
   <img width="180" alt="Login Screen" src="https://github.com/user-attachments/assets/1b96d618-c561-42a2-b7ba-d866f5d97e6f" />
+  <img width="180" alt="Result Screen" src="https://github.com/user-attachments/assets/5009530a-6109-4cd6-bf8f-c84fd2ebcc32" />
 
-  <img width="180" alt="Main Screen" src="https://github.com/user-attachments/assets/439dac78-61d9-4c34-b9cb-4f8a3651834e" />
-
+ 
   <img width="180" alt="History Screen" src="https://github.com/user-attachments/assets/bab9c111-cdc6-458f-a577-92b2432ae754" />
 
   <img width="180" alt="Quiz Screen" src="https://github.com/user-attachments/assets/32e20114-1f06-40b1-8c8e-bcb993501d29" />
+   <img width="180" alt="Main Screen" src="https://github.com/user-attachments/assets/439dac78-61d9-4c34-b9cb-4f8a3651834e" />
 
-  <img width="180" alt="Result Screen" src="https://github.com/user-attachments/assets/5009530a-6109-4cd6-bf8f-c84fd2ebcc32" />
+
+  
 
 </div>
 
